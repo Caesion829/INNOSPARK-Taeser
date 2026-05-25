@@ -1,1 +1,1 @@
-# INNOSPARK-Taeser
+# Taeser

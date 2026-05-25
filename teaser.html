@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目详情 | 未来科创家计划 INNOSPARK</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --blue:#2563eb;--blue-d:#1d4ed8;--blue-l:#3b82f6;--blue-ll:#60a5fa;
+      --cyan:#0891b2;--cyan-d:#0e7490;--cyan-l:#06b6d4;
+      --ink:#0f172a;--t1:#1e293b;--t2:#334155;--t3:#64748b;--t4:#94a3b8;
+      --b1:#f1f5f9;--b2:#e2e8f0;--b3:#cbd5e1;
+      --r:16px;--rl:20px;
+      --ease:cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      background:#fafbfd;color:var(--t1);line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* ═══ Header ═══ */
+    .hd{
+      text-align:center;padding:56px 24px 48px;
+      background:#fff;border-bottom:1px solid var(--b1);
+    }
+    .hd img{height:40px;width:auto;margin-bottom:20px;opacity:.85}
+    .hd h1{font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-.3px;margin-bottom:6px}
+    .hd p{font-size:13px;color:var(--t4);font-weight:500;letter-spacing:.5px}
+
+    /* ═══ Layout ═══ */
+    .wrap{max-width:880px;margin:0 auto;padding:48px 24px 80px}
+
+    /* ═══ Project Frame ═══ */
+    .proj{
+      margin-bottom:72px;padding:0;
+      background:#fff;border-radius:var(--rl);
+      border:1px solid var(--b1);
+      box-shadow:0 0 0 1px rgba(0,0,0,.02),0 4px 24px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03);
+      overflow:hidden;
+    }
+    .proj:last-child{margin-bottom:0}
+
+    /* ═══ Hero ═══ */
+    .hero{
+      padding:40px 44px 36px;color:#fff;position:relative;overflow:hidden;
+    }
+    .hero.bl{background:linear-gradient(135deg,#1e40af 0%,#2563eb 50%,#3b82f6 100%)}
+    .hero.cy{background:linear-gradient(135deg,#0e7490 0%,#0891b2 50%,#22d3ee 100%)}
+    .hero::after{
+      content:"";position:absolute;top:-40%;right:-20%;width:500px;height:500px;
+      border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;
+    }
+    .hero h2{font-size:34px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px;line-height:1.2}
+    .hero .sub{font-size:15px;opacity:.82;font-weight:400;line-height:1.6}
+    .hero .tags{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+    .hero .tag{
+      padding:6px 16px;border-radius:100px;font-size:12.5px;font-weight:600;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);
+      backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    }
+
+    /* ═══ Content Area ═══ */
+    .body{padding:36px 44px 44px}
+
+    /* ═══ Section ═══ */
+    .sec{margin-bottom:40px}.sec:last-child{margin-bottom:0}
+    .sec-head{margin-bottom:18px}
+    .sec-en{
+      font-size:10.5px;font-weight:700;color:var(--blue);
+      letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
+    }
+    .sec.cy .sec-en{color:var(--cyan)}
+    .sec-t{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.2px}
+
+    /* ═══ Desc ═══ */
+    .desc{font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:20px}
+    .desc b{color:var(--blue);font-weight:600}
+    .sec.cy .desc b{color:var(--cyan)}
+
+    /* ═══ Pillars (3-col product cards) ═══ */
+    .pils{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .pil{
+      text-align:center;padding:28px 18px 24px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .pil:hover{background:#fff;border-color:var(--b2);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+    .pil .ico{
+      width:42px;height:42px;margin:0 auto 14px;border-radius:12px;
+      display:grid;place-items:center;font-size:16px;color:#fff;font-weight:700;
+    }
+    .pil .ico.bl{background:linear-gradient(135deg,#2563eb,#60a5fa)}
+    .pil .ico.cy{background:linear-gradient(135deg,#0891b2,#22d3ee)}
+    .pil h4{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .pil .en{font-size:9.5px;color:var(--t4);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+    .pil p{font-size:12.5px;color:var(--t3);line-height:1.6}
+
+    /* ═══ Grid-2 Cards (highlights, moat) ═══ */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .gc{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);position:relative;
+    }
+    .gc:hover{background:#fff;border-color:var(--b2);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .gc h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:7px;line-height:1.45}
+    .gc p{font-size:12.5px;color:var(--t3);line-height:1.7}
+
+    /* ═══ Detail List (capabilities, market) ═══ */
+    .dl{display:flex;flex-direction:column;gap:12px}
+    .di{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .di:hover{background:#fff;border-color:var(--b2)}
+    .di h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+    .di p{font-size:12.5px;color:var(--t3);line-height:1.65}
+
+    /* ═══ Team ═══ */
+    .team{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .tc{
+      padding:18px 20px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .tc:hover{border-color:var(--b2)}
+    .tc .nm{font-size:14.5px;font-weight:700;color:var(--ink)}
+    .tc .rl{font-size:11px;color:var(--blue);font-weight:600;margin:1px 0 6px}
+    .sec.cy .tc .rl{color:var(--cyan)}
+    .tc p{font-size:12px;color:var(--t3);line-height:1.55}
+
+    /* ═══ Metrics ═══ */
+    .mets{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .met{
+      text-align:center;padding:20px 8px;border-radius:var(--r);
+      background:linear-gradient(135deg,#f0f7ff,#f8fbff);
+      border:1px solid #dbeafe;
+    }
+    .met .n{font-size:26px;font-weight:900;color:var(--blue);line-height:1}
+    .met h4{font-size:11.5px;font-weight:700;color:var(--ink);margin:8px 0 2px}
+    .met p{font-size:10.5px;color:var(--t4)}
+
+    /* ═══ Revenue ═══ */
+    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+    .rev{
+      flex:1 1 160px;min-width:140px;max-width:200px;
+      text-align:center;padding:18px 14px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .rev:hover{border-color:var(--b2);background:#fff}
+    .rev h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .rev p{font-size:12px;color:var(--t3)}
+
+    /* ═══ Finance ═══ */
+    .fing{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fin{
+      padding:22px;background:#fafbfd;border-radius:var(--r);
+      border:1px solid var(--b1);
+    }
+    .fin h4{
+      font-size:12px;font-weight:700;color:var(--blue);
+      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;
+    }
+    .sec.cy .fin h4{color:var(--cyan)}
+    .fr{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 0;border-bottom:1px solid var(--b1);font-size:14px;
+    }
+    .fr:last-child{border-bottom:none}
+    .fr .k{color:var(--t4)}.fr .v{color:var(--ink);font-weight:700}
+
+    /* ═══ Footer ═══ */
+    .ft{
+      text-align:center;padding:32px 24px;
+      border-top:1px solid var(--b1);
+    }
+    .ft img{height:16px;width:auto;opacity:.4;margin-bottom:6px}
+    .ft p{font-size:12px;color:var(--t4)}
+
+    /* ═══ Responsive ═══ */
+    @media(max-width:768px){
+      .hero{padding:28px 28px 24px}
+      .hero h2{font-size:24px}
+      .body{padding:28px 24px 32px}
+      .g2,.fing{grid-template-columns:1fr}
+      .pils,.mets{grid-template-columns:1fr 1fr}
+      .wrap{padding:32px 16px 60px}
+    }
+    @media(max-width:480px){
+      .pils,.mets{grid-template-columns:1fr}
+      .team{grid-template-columns:1fr}
+      .hero .tags{flex-direction:column;align-items:flex-start}
+      .rev{min-width:100%;max-width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hd">
+    <img src="logo.png" alt="科创之光 INNOSPARK">
+    <h1>项目详情</h1>
+    <p>未来科创家计划 · Project Details</p>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ═══════════ 清航时代 ═══════════ -->
+    <div class="proj">
+      <div class="hero bl">
+        <h2>清航时代</h2>
+        <p class="sub">飞行器长续航大载重能源动力系统提供者</p>
+        <div class="tags">
+          <span class="tag">续航提升数十倍</span>
+          <span class="tag">载重提升数倍</span>
+        </div>
+      </div>
+
+      <div class="body">
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Product</div><div class="sec-t">产品介绍</div></div>
+          <p class="desc"><b>清航时代</b>专注于飞行器长续航大载重能源动力系统的研发与产业化，为低空飞行器提供<b>液氢储能供</b>、<b>高温 PEM</b>、<b>液氢超导融合</b>三位一体的全栈动力解决方案，突破传统锂电池续航瓶颈，实现飞行器续航与载重的跨越式提升。</p>
+          <div class="pils">
+            <div class="pil">
+              <div class="ico bl">H₂</div>
+              <h4>液氢储能</h4><div class="en">SUPPLY</div>
+              <p>高能量密度液氢储能系统，质量储氢密度可达 40%~70%</p>
+            </div>
+            <div class="pil">
+              <div class="ico bl">⚡</div>
+              <h4>高温 PEM</h4><div class="en">CONVERT</div>
+              <p>风冷高温氢电耦合系统，功率密度提升至 2000 W/kg</p>
+            </div>
+            <div class="pil">
+              <div class="ico bl">∞</div>
+              <h4>超导融合</h4><div class="en">OUTPUT</div>
+              <p>液氢冷能驱动超导电机，动力功率密度提升 3-5 倍</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Highlights</div><div class="sec-t">投资亮点</div></div>
+          <div class="g2">
+            <div class="gc"><h4>政策风口明确</h4><p>低空经济连续进入国家战略视野，航空航天、低空经济、氢能等方向受政策推动，产业进入加速发展窗口期。</p></div>
+            <div class="gc"><h4>万亿级低空经济赛道</h4><p>覆盖物流、巡检、出行、救援等多场景，市场空间广阔，解决无人机、eVTOL 续航短、载重低等动力瓶颈。</p></div>
+            <div class="gc"><h4>掌握核心技术高壁垒</h4><p>"液氢储能供 + 高温 PEM + 液氢-超导融合"系统方案，兼具高能量密度与高功率密度。</p></div>
+            <div class="gc"><h4>名校硕博背景团队</h4><p>核心团队来自清华，覆盖氢能、热物理、燃料电池、材料、自动化、算法与 B 端市场拓展。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Capabilities</div><div class="sec-t">核心能力</div></div>
+          <div class="dl">
+            <div class="di"><h4>能量存储 — 高能量密度液氢储能系统</h4><p>氢是能量密度最高的化学能源，液氢是存储密度最高的氢能形态。通过轻量化耐低温复合材料技术，系统能量密度可达 10000 Wh/kg，相较锂电池提升数十倍。</p></div>
+            <div class="di"><h4>氢电转化 — 风冷高温 PEM 氢电耦合系统</h4><p>高温 PEM 燃料电池具有工作温度提升、散热简化、无需加湿等优势。系统重量可压缩超 50%，综合效能进一步提升 30%~40%。</p></div>
+            <div class="di"><h4>动力输出 — 液氢-超导融合系统</h4><p>超导电机相较于传统电机在动力功率密度上具有数倍优势。液氢冷能利用刚好能为超导实现提供低温环境，实现一体化融合。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Moat</div><div class="sec-t">技术壁垒</div></div>
+          <div class="g2">
+            <div class="gc"><h4>全栈动力解决方案</h4><p>从液氢储能、氢电转化到超导动力输出，提供全栈一体化动力系统方案，适配多类型低空飞行器平台。</p></div>
+            <div class="gc"><h4>轻量化耐低温复合材料</h4><p>自研耐低温复合材料技术，解决液氢存储中的绝热与轻量化难题，极端低温环境下保持稳定性能。</p></div>
+            <div class="gc"><h4>从实验室到产业化</h4><p>具备从核心材料研发、系统设计到工程样机制造的全链条能力，已在多个低空飞行器平台上完成验证。</p></div>
+            <div class="gc"><h4>多重冗余安全保障</h4><p>建立液氢存储、输送、使用的全链路安全体系，通过多重冗余设计与实时监测确保运行安全可靠。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Team</div><div class="sec-t">团队简介</div></div>
+          <div class="team">
+            <div class="tc">
+              <div class="nm">何荣杰</div>
+              <div class="rl">创始人 · CEO & CTO</div>
+              <p>清华大学博士，新能源技术专业；清华大学碳中和协会、低空经济协会副会长</p>
+            </div>
+            <div class="tc">
+              <div class="nm">唐伊丽</div>
+              <div class="rl">联创 · 联席 CTO</div>
+              <p>清华大学博士，能源工程及材料科学工程专业；负责氢能及电堆系统设计</p>
+            </div>
+            <div class="tc">
+              <div class="nm">徐文浩</div>
+              <div class="rl">联创 · CPO</div>
+              <p>清华大学硕士，自动化和力学方向；熟悉产品从技术落地到生产全流程</p>
+            </div>
+            <div class="tc">
+              <div class="nm">蒋洪滔</div>
+              <div class="rl">联创 · CMO</div>
+              <p>曾任头部央企大客户经理，年市场业绩超 3000 万，负责市场规划与业务开拓</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Market</div><div class="sec-t">市场与落地现状</div></div>
+          <div class="dl">
+            <div class="di"><h4>市场需求明确</h4><p>低空飞行器普遍面临续航短、载重低、补能频繁等痛点，对高能量密度动力系统需求迫切。</p></div>
+            <div class="di"><h4>产品验证推进中</h4><p>当前正处于液氢储供装置、高温 PEM 及系统集成的产品验证测试阶段，逐步验证核心性能指标。</p></div>
+            <div class="di"><h4>场景落地聚焦</h4><p>优先切入无人机巡检、长途物流、特种作业等载物场景，后续拓展至 eVTOL、翼船及航空应用。</p></div>
+            <div class="di"><h4>合作路径清晰</h4><p>通过与整机厂、场景方及产业伙伴开展合作研发和测试验证，推动产品从样机验证走向商业化落地。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Revenue & Finance</div><div class="sec-t">营收与融资</div></div>
+          <div class="revs">
+            <div class="rev"><h4>产品销售</h4><p>销售液氢储供、高温 PEM 及动力系统产品</p></div>
+            <div class="rev"><h4>合作研发</h4><p>与整机厂及产业伙伴联合开发定制方案</p></div>
+            <div class="rev"><h4>产品代理</h4><p>代理相关配套产品，拓展渠道与场景</p></div>
+          </div>
+          <div class="fing">
+            <div class="fin">
+              <h4>融资计划</h4>
+              <div class="fr"><span class="k">轮次</span><span class="v">天使轮</span></div>
+              <div class="fr"><span class="k">融资目标</span><span class="v">900 万 CNY</span></div>
+              <div class="fr"><span class="k">估值</span><span class="v">9,000 万 CNY</span></div>
+            </div>
+            <div class="fin">
+              <h4>资金用途</h4>
+              <div class="fr"><span class="k">技术研发</span><span class="v">50%</span></div>
+              <div class="fr"><span class="k">产品验证</span><span class="v">25%</span></div>
+              <div class="fr"><span class="k">市场拓展</span><span class="v">15%</span></div>
+              <div class="fr"><span class="k">团队建设</span><span class="v">10%</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════ 甜筒 UniCone ═══════════ -->
+    <div class="proj">
+      <div class="hero cy">
+        <h2>甜筒 UniCone</h2>
+        <p class="sub">持续感知、记录个人数据的主动式服务 AI</p>
+        <div class="tags">
+          <span class="tag">日程</span>
+          <span class="tag">人际</span>
+          <span class="tag">内容</span>
+        </div>
+      </div>
+
+      <div class="body">
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Product</div><div class="sec-t">产品介绍</div></div>
+          <p class="desc"><b>甜筒 UniCone</b>是一款持续感知、记录个人数据，并主动服务的 AI Agent，为超级个体提升<b>日程 · 人际 · 内容</b>三大场景的效能。把每个人散落各处的上下文，沉淀成可持续带来复利的个人资产，释放人类的更多创造力。</p>
+          <p class="desc" style="margin-top:-8px">依托<b>清华系核心团队</b>，凭借基于因果图的在线学习架构与 GDPR 级隐私保护技术，业内首创从"指令触发"向"<b>预判服务</b>"的跨代进化，真正实现全场景下对<b>超级个体</b>创造力与效能的极致赋能。</p>
+          <div class="pils">
+            <div class="pil">
+              <div class="ico cy">◎</div>
+              <h4>日程</h4><div class="en">INLET</div>
+              <p>最有价值的 personal context 入口</p>
+            </div>
+            <div class="pil">
+              <div class="ico cy">∞</div>
+              <h4>人际</h4><div class="en">LINK</div>
+              <p>人与人之间上下文的链接</p>
+            </div>
+            <div class="pil">
+              <div class="ico cy">↗</div>
+              <h4>内容</h4><div class="en">OUTPUT</div>
+              <p>上下文价值的对外延伸</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Highlights</div><div class="sec-t">投资亮点</div></div>
+          <div class="g2">
+            <div class="gc"><h4>主动服务的人机新范式</h4><p>打破被动对话模式，通过持续感知实现意图预判与主动介入，定义从工具向 AI Partner 的跨代级交互跃迁。</p></div>
+            <div class="gc"><h4>上下文资产化的记忆引擎</h4><p>自研因果图长期记忆架构，将碎片信息沉淀为可复利的个人数字资产，构建难以逾越的核心技术护城河。</p></div>
+            <div class="gc"><h4>全栈闭环的清华系团队</h4><p>汇聚顶尖学术、硬核工程与百万级市场号召力，能将尖端算法转化为工业级产品并实现商业跑通。</p></div>
+            <div class="gc"><h4>精准赋能高净值超级个体</h4><p>聚焦日程、人际与内容场景，已获百万级商业订单实测验证，展现出极强爆发力。</p></div>
+          </div>
+        </div>
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Capabilities</div><div class="sec-t">核心能力</div></div>
+          <div class="dl">
+            <div class="di"><h4>持续感知 — 精准识别用户意图</h4><p>多模态数据融合，精准识别用户意图；自动捕获任务上下文，避免误判遗漏；针对微信、飞书等办公场景深度优化。</p></div>
+            <div class="di"><h4>积累认知 — 因果图记忆架构</h4><p>层层提取数据结构，基于因果图架构；有效捕捉用户交互中有意义信息；在线学习更新，用户无感建图。</p></div>
+            <div class="di"><h4>主动服务 — 恰到好处的 AI 助理</h4><p>小大协作模型，节省 token 快速反应；业内首个真实用户数据积累；基于真实数据微调训练。</p></div>
+            <div class="di"><h4>安全隐私 — GDPR 级防护</h4><p>数据本地存储不上云；加密传输；敏感信息掩码传输，堵住 API 泄露。</p></div>
+          </div>
+        </div>
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Moat</div><div class="sec-t">技术壁垒</div></div>
+          <div class="g2">
+            <div class="gc"><h4>因果图长期记忆架构</h4><p>首创基于因果图的在线学习记忆系统，实现上下文的深度理解与关联推理，远超传统 RAG 方案。</p></div>
+            <div class="gc"><h4>GDPR 级隐私保护</h4><p>数据本地存储 + 加密传输 + 敏感信息掩码三重防护，确保用户数据绝对安全。</p></div>
+            <div class="gc"><h4>多模态上下文融合</h4><p>整合文本、语音、日程、社交等多维度数据，构建完整的个人上下文画像。</p></div>
+            <div class="gc"><h4>预判式服务引擎</h4><p>基于用户行为模式学习，在用户需求产生前主动提供服务建议，从"人找服务"进化到"服务找人"。</p></div>
+          </div>
+        </div>
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Team</div><div class="sec-t">团队简介</div></div>
+          <div class="team">
+            <div class="tc">
+              <div class="nm">唐元博</div>
+              <div class="rl">创始人 · CEO</div>
+              <p>清华大学博士，数据科学与信息技术方向，专注数据高效轨迹生成、大模型 MoE 等</p>
+            </div>
+            <div class="tc">
+              <div class="nm">胡可儿</div>
+              <div class="rl">CPO · KOL</div>
+              <p>清华大学硕士，全网百万大V，APEC 亚太青年领袖；负责产品设计与市场调研</p>
+            </div>
+            <div class="tc">
+              <div class="nm">唐华泽</div>
+              <div class="rl">CTO</div>
+              <p>清华大学博士，参与美团无人机 ATUM 系统开发，获 2024 卓越实践奖</p>
+            </div>
+            <div class="tc">
+              <div class="nm">郭文浩</div>
+              <div class="rl">全栈架构</div>
+              <p>8 年企业级 AI 落地经验，曾服务多家头部客户，实现超 50% 人力优化</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Market</div><div class="sec-t">市场与落地现状</div></div>
+          <div class="mets">
+            <div class="met"><div class="n">60+</div><h4>一作顶会论文</h4><p>ICDE / CHI / IMWUT</p></div>
+            <div class="met"><div class="n">2k+</div><h4>开源 Star</h4><p>技术影响力验证</p></div>
+            <div class="met"><div class="n">百万</div><h4>商业订单</h4><p>商业化能力验证</p></div>
+            <div class="met"><div class="n">5k+</div><h4>种子用户</h4><p>超级个体精准命中</p></div>
+          </div>
+        </div>
+
+        <div class="sec cy">
+          <div class="sec-head"><div class="sec-en">Revenue & Finance</div><div class="sec-t">营收与融资</div></div>
+          <div class="revs">
+            <div class="rev"><h4>个人订阅</h4><p>按月/年订阅付费</p></div>
+            <div class="rev"><h4>采集分销</h4><p>上下文数据合规分销</p></div>
+            <div class="rev"><h4>上下文商业网络</h4><p>跨平台商业连接</p></div>
+            <div class="rev"><h4>可穿戴硬件</h4><p>感知硬件设备销售</p></div>
+            <div class="rev"><h4>Token 计量</h4><p>按使用量按需计费</p></div>
+          </div>
+          <div class="fing">
+            <div class="fin">
+              <h4>融资计划</h4>
+              <div class="fr"><span class="k">轮次</span><span class="v">天使轮</span></div>
+              <div class="fr"><span class="k">融资目标</span><span class="v">1,500 万 CNY</span></div>
+              <div class="fr"><span class="k">估值</span><span class="v">1.5 亿 CNY</span></div>
+            </div>
+            <div class="fin">
+              <h4>三年 ARR 预测（万元）</h4>
+              <div class="fr"><span class="k">Y1</span><span class="v">1,340</span></div>
+              <div class="fr"><span class="k">Y2</span><span class="v">5,200</span></div>
+              <div class="fr"><span class="k">Y3</span><span class="v">17,000</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft">
+    <img src="logo.png" alt="科创之光">
+    <p>科创之光 INNOSPARK · 未来科创家计划</p>
+  </div>
+
+</body>
+</html>
