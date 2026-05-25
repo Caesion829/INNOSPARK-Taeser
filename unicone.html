@@ -7,7 +7,7 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --cyan:#0891b2;--cyan-d:#0e7490;--cyan-l:#06b6d4;
+      --blue:#2563eb;--blue-d:#1d4ed8;--blue-l:#3b82f6;--blue-ll:#60a5fa;
       --ink:#0f172a;--t1:#1e293b;--t2:#334155;--t3:#64748b;--t4:#94a3b8;
       --b1:#f1f5f9;--b2:#e2e8f0;--b3:#cbd5e1;
       --r:16px;--rl:20px;
@@ -24,12 +24,12 @@
     .back{
       display:inline-flex;align-items:center;gap:6px;
       padding:8px 18px;margin:20px 0 0 20px;
-      font-size:13px;font-weight:600;color:var(--cyan);
+      font-size:13px;font-weight:600;      color:var(--blue);
       text-decoration:none;border-radius:100px;
-      background:#ecfeff;border:1px solid #a5f3fc;
+      background:#eff6ff;border:1px solid #dbeafe;
       transition:all .2s var(--ease);
     }
-    .back:hover{background:#a5f3fc}
+    .back:hover{background:#dbeafe}
 
     /* ═══ Header ═══ */
     .hd{
@@ -55,7 +55,7 @@
     .hero{
       padding:40px 44px 36px;color:#fff;position:relative;overflow:hidden;
     }
-    .hero.cy{background:linear-gradient(135deg,#0e7490 0%,#0891b2 50%,#22d3ee 100%)}
+    .hero.bl{background:linear-gradient(135deg,#1e40af 0%,#2563eb 50%,#3b82f6 100%)}
     .hero::after{
       content:"";position:absolute;top:-40%;right:-20%;width:500px;height:500px;
       border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;
@@ -76,14 +76,14 @@
     .sec{margin-bottom:40px}.sec:last-child{margin-bottom:0}
     .sec-head{margin-bottom:18px}
     .sec-en{
-      font-size:10.5px;font-weight:700;color:var(--cyan);
+      font-size:10.5px;font-weight:700;color:var(--blue);
       letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
     }
     .sec-t{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.2px}
 
     /* ═══ Desc ═══ */
     .desc{font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:20px}
-    .desc b{color:var(--cyan);font-weight:600}
+    .desc b{color:var(--blue);font-weight:600}
 
     /* ═══ Pillars ═══ */
     .pils{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -97,7 +97,7 @@
       width:42px;height:42px;margin:0 auto 14px;border-radius:12px;
       display:grid;place-items:center;font-size:16px;color:#fff;font-weight:700;
     }
-    .pil .ico.cy{background:linear-gradient(135deg,#0891b2,#22d3ee)}
+    .pil .ico.bl{background:linear-gradient(135deg,#2563eb,#60a5fa)}
     .pil h4{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
     .pil .en{font-size:9.5px;color:var(--t4);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
     .pil p{font-size:12.5px;color:var(--t3);line-height:1.6}
@@ -140,10 +140,10 @@
     .mets{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .met{
       text-align:center;padding:20px 8px;border-radius:var(--r);
-      background:linear-gradient(135deg,#ecfeff,#f8fdff);
-      border:1px solid #a5f3fc;
+      background:linear-gradient(135deg,#eff6ff,#f8faff);
+      border:1px solid #dbeafe;
     }
-    .met .n{font-size:26px;font-weight:900;color:var(--cyan);line-height:1}
+    .met .n{font-size:26px;font-weight:900;color:var(--blue);line-height:1}
     .met h4{font-size:11.5px;font-weight:700;color:var(--ink);margin:8px 0 2px}
     .met p{font-size:10.5px;color:var(--t4)}
 
@@ -166,7 +166,7 @@
       border:1px solid var(--b1);
     }
     .fin h4{
-      font-size:12px;font-weight:700;color:var(--cyan);
+      font-size:12px;font-weight:700;color:var(--blue);
       letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;
     }
     .fr{
@@ -242,7 +242,7 @@
 
   <div class="wrap">
     <div class="proj">
-      <div class="hero cy">
+      <div class="hero bl">
         <h2>甜筒 UniCone</h2>
         <p class="sub">持续感知、记录个人数据的主动式服务 AI</p>
         <div class="tags">
@@ -260,17 +260,17 @@
           <p class="desc" style="margin-top:-8px">依托<b>清华系核心团队</b>，凭借基于因果图的在线学习架构与 GDPR 级隐私保护技术，业内首创从"指令触发"向"<b>预判服务</b>"的跨代进化，真正实现全场景下对<b>超级个体</b>创造力与效能的极致赋能。</p>
           <div class="pils">
             <div class="pil">
-              <div class="ico cy">◎</div>
+              <div class="ico bl">◎</div>
               <h4>日程</h4><div class="en">INLET</div>
               <p>最有价值的 personal context 入口</p>
             </div>
             <div class="pil">
-              <div class="ico cy">∞</div>
+              <div class="ico bl">∞</div>
               <h4>人际</h4><div class="en">LINK</div>
               <p>人与人之间上下文的链接</p>
             </div>
             <div class="pil">
-              <div class="ico cy">↗</div>
+              <div class="ico bl">↗</div>
               <h4>内容</h4><div class="en">OUTPUT</div>
               <p>上下文价值的对外延伸</p>
             </div>
