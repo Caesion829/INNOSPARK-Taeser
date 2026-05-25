@@ -5,150 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>未来科创家计划 | INNOSPARK</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      background: #ffffff;
-      color: #1a1a2e;
-      line-height: 1.6;
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --blue:#2563eb;--blue-l:#3b82f6;
+      --cyan:#0891b2;--cyan-l:#06b6d4;
+      --ink:#0f172a;--t1:#1e293b;--t2:#334155;--t3:#64748b;--t4:#94a3b8;
+      --b1:#f1f5f9;--b2:#e2e8f0;
+      --r:20px;
+      --ease:cubic-bezier(.4,0,.2,1);
     }
-    .header {
-      text-align: center;
-      padding: 56px 20px 40px;
-      background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
-      border-bottom: 1px solid #e8f0fe;
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      background:#fafbfd;color:var(--t1);line-height:1.65;
+      -webkit-font-smoothing:antialiased;
     }
-    .logo-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+
+    /* ═══ Header ═══ */
+    .hd{
+      text-align:center;padding:64px 24px 52px;
+      background:#fff;border-bottom:1px solid var(--b1);
     }
-    .logo-wrap img { height: 48px; width: auto; }
-    .header h1 { font-size: 36px; font-weight: 700; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
-    .header .subtitle { font-size: 16px; color: #64748b; font-weight: 400; }
-    .projects {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 48px 20px 64px;
+    .hd img{height:44px;width:auto;margin-bottom:24px;opacity:.9}
+    .hd h1{
+      font-size:36px;font-weight:900;color:var(--ink);
+      letter-spacing:-.5px;margin-bottom:8px;
     }
-    .section-title {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 32px; padding-left: 4px;
+    .hd p{
+      font-size:14px;color:var(--t4);font-weight:500;letter-spacing:.8px;
     }
-    .section-title .line {
-      width: 4px; height: 24px;
-      background: linear-gradient(180deg, #2563eb, #1d4ed8);
-      border-radius: 2px;
+
+    /* ═══ Projects Grid ═══ */
+    .grid{
+      max-width:960px;margin:0 auto;
+      padding:56px 24px 80px;
+      display:grid;grid-template-columns:1fr 1fr;gap:28px;
     }
-    .section-title h2 { font-size: 20px; font-weight: 700; color: #0f172a; }
-    .project-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 44px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    /* ═══ Project Card ═══ */
+    .card{
+      display:block;text-decoration:none;color:inherit;
+      background:#fff;border-radius:var(--r);
+      border:1px solid var(--b1);
+      box-shadow:0 0 0 1px rgba(0,0,0,.02),0 4px 24px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03);
+      overflow:hidden;
+      transition:all .3s var(--ease);
     }
-    .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 12px 40px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.04);
     }
-    .project-card img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-bottom: 1px solid #f1f5f9;
+
+    /* Card Top Banner */
+    .card-banner{
+      height:180px;position:relative;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
     }
-    .project-info {
-      padding: 24px 28px 28px;
+    .card-banner.bl{background:linear-gradient(135deg,#1e40af 0%,#2563eb 50%,#3b82f6 100%)}
+    .card-banner.cy{background:linear-gradient(135deg,#0e7490 0%,#0891b2 50%,#22d3ee 100%)}
+    .card-banner::after{
+      content:"";position:absolute;top:-60%;right:-30%;
+      width:300px;height:300px;border-radius:50%;
+      background:rgba(255,255,255,.06);
     }
-    .project-info h3 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 6px;
+    .card-banner .icon{
+      font-size:52px;color:rgba(255,255,255,.18);font-weight:900;
+      position:relative;z-index:1;user-select:none;
     }
-    .project-info p {
-      font-size: 14px;
-      color: #64748b;
-      line-height: 1.7;
-      margin-bottom: 14px;
+
+    /* Card Body */
+    .card-body{padding:28px 28px 32px}
+    .card-body h2{
+      font-size:24px;font-weight:900;color:var(--ink);
+      letter-spacing:-.3px;margin-bottom:8px;
     }
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      color: #2563eb;
-      background: #eff6ff;
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-right: 6px;
+    .card-body .sub{
+      font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:18px;
     }
-    .footer {
-      text-align: center;
-      padding: 32px 20px;
-      font-size: 13px;
-      color: #94a3b8;
-      border-top: 1px solid #f1f5f9;
+    .card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+    .card-tags span{
+      font-size:11.5px;font-weight:600;padding:5px 12px;
+      border-radius:100px;
     }
-    .footer img {
-      height: 20px;
-      width: auto;
-      opacity: 0.6;
-      margin-bottom: 6px;
+    .card-tags span.bl{color:var(--blue);background:#eff6ff;border:1px solid #dbeafe}
+    .card-tags span.cy{color:var(--cyan);background:#ecfeff;border:1px solid #a5f3fc}
+
+    .card-arrow{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13.5px;font-weight:700;
+      transition:gap .2s var(--ease);
     }
-    @media (max-width: 640px) {
-      .header { padding: 40px 16px 32px; }
-      .header h1 { font-size: 26px; }
-      .logo-wrap img { height: 36px; }
-      .project-info h3 { font-size: 18px; }
-      .projects { padding: 32px 16px 48px; }
+    .card-arrow.bl{color:var(--blue)}
+    .card-arrow.cy{color:var(--cyan)}
+    .card:hover .card-arrow{gap:12px}
+
+    /* ═══ Footer ═══ */
+    .ft{
+      text-align:center;padding:36px 24px;
+      border-top:1px solid var(--b1);
+    }
+    .ft img{height:18px;width:auto;opacity:.35;margin-bottom:8px}
+    .ft p{font-size:12px;color:var(--t4)}
+
+    /* ═══ Responsive ═══ */
+    @media(max-width:768px){
+      .hd{padding:48px 20px 40px}
+      .hd h1{font-size:28px}
+      .hd img{height:36px}
+      .grid{grid-template-columns:1fr;gap:20px;padding:36px 16px 60px}
+      .card-body{padding:22px 22px 26px}
+      .card-body h2{font-size:21px}
+      .card-banner{height:140px}
+      .card-banner .icon{font-size:42px}
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo-wrap">
-      <img src="logo.png" alt="科创之光 INNOSPARK">
-    </div>
+
+  <div class="hd">
+    <img src="logo.png" alt="科创之光 INNOSPARK">
     <h1>未来科创家计划</h1>
-    <p class="subtitle">Project Showcase · 科创项目展示</p>
+    <p>INNOSPARK · PROJECT SHOWCASE</p>
   </div>
 
-  <div class="projects">
-    <div class="section-title">
-      <div class="line"></div>
-      <h2>本期项目</h2>
-    </div>
+  <div class="grid">
 
-    <div class="project-card">
-      <img src="qinghang.jpg?v=2" alt="清航时代 - 飞行器长续航大载重能源动力系统">
-      <div class="project-info">
-        <h3>清航时代</h3>
-        <p>飞行器长续航大载重能源动力系统提供者</p>
-        <span class="tag">新能源</span>
-        <span class="tag">航空动力</span>
-        <span class="tag">低空经济</span>
+    <a class="card" href="qinghang.html">
+      <div class="card-banner bl">
+        <div class="icon">H₂</div>
       </div>
-    </div>
+      <div class="card-body">
+        <h2>清航时代</h2>
+        <p class="sub">飞行器长续航大载重能源动力系统提供者，突破传统锂电池续航瓶颈，实现续航与载重跨越式提升。</p>
+        <div class="card-tags">
+          <span class="bl">新能源</span>
+          <span class="bl">航空动力</span>
+          <span class="bl">低空经济</span>
+        </div>
+        <div class="card-arrow bl">查看详情 &#8594;</div>
+      </div>
+    </a>
 
-    <div class="project-card">
-      <img src="unicone.jpg?v=2" alt="甜筒UniCone - 持续感知、记录个人数据的主动式服务AI">
-      <div class="project-info">
-        <h3>甜筒 UniCone</h3>
-        <p>打造全球领先的持续感知、记录个人数据的主动式服务AI</p>
-        <span class="tag">AI Agent</span>
-        <span class="tag">人机关系</span>
-        <span class="tag">超级个体</span>
+    <a class="card" href="unicone.html">
+      <div class="card-banner cy">
+        <div class="icon">&#9733;</div>
       </div>
-    </div>
+      <div class="card-body">
+        <h2>甜筒 UniCone</h2>
+        <p class="sub">持续感知、记录个人数据的主动式服务 AI，为超级个体提升日程、人际、内容三大场景效能。</p>
+        <div class="card-tags">
+          <span class="cy">AI Agent</span>
+          <span class="cy">人机关系</span>
+          <span class="cy">超级个体</span>
+        </div>
+        <div class="card-arrow cy">查看详情 &#8594;</div>
+      </div>
+    </a>
+
   </div>
 
-  <div class="footer">
+  <div class="ft">
     <img src="logo.png" alt="科创之光">
     <p>科创之光 INNOSPARK · 未来科创家计划</p>
   </div>
+
 </body>
 </html>

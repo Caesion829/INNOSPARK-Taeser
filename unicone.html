@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>甜筒 UniCone | 未来科创家计划 INNOSPARK</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --cyan:#0891b2;--cyan-d:#0e7490;--cyan-l:#06b6d4;
+      --ink:#0f172a;--t1:#1e293b;--t2:#334155;--t3:#64748b;--t4:#94a3b8;
+      --b1:#f1f5f9;--b2:#e2e8f0;--b3:#cbd5e1;
+      --r:16px;--rl:20px;
+      --ease:cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      background:#fafbfd;color:var(--t1);line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* ═══ Back Button ═══ */
+    .back{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:8px 18px;margin:20px 0 0 20px;
+      font-size:13px;font-weight:600;color:var(--cyan);
+      text-decoration:none;border-radius:100px;
+      background:#ecfeff;border:1px solid #a5f3fc;
+      transition:all .2s var(--ease);
+    }
+    .back:hover{background:#a5f3fc}
+
+    /* ═══ Header ═══ */
+    .hd{
+      text-align:center;padding:48px 24px 40px;
+      background:#fff;border-bottom:1px solid var(--b1);
+    }
+    .hd img{height:36px;width:auto;margin-bottom:16px;opacity:.85}
+    .hd h1{font-size:26px;font-weight:800;color:var(--ink);letter-spacing:-.3px;margin-bottom:6px}
+    .hd p{font-size:13px;color:var(--t4);font-weight:500;letter-spacing:.5px}
+
+    /* ═══ Layout ═══ */
+    .wrap{max-width:880px;margin:0 auto;padding:40px 24px 72px}
+
+    /* ═══ Project Frame ═══ */
+    .proj{
+      background:#fff;border-radius:var(--rl);
+      border:1px solid var(--b1);
+      box-shadow:0 0 0 1px rgba(0,0,0,.02),0 4px 24px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03);
+      overflow:hidden;
+    }
+
+    /* ═══ Hero ═══ */
+    .hero{
+      padding:40px 44px 36px;color:#fff;position:relative;overflow:hidden;
+    }
+    .hero.cy{background:linear-gradient(135deg,#0e7490 0%,#0891b2 50%,#22d3ee 100%)}
+    .hero::after{
+      content:"";position:absolute;top:-40%;right:-20%;width:500px;height:500px;
+      border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;
+    }
+    .hero h2{font-size:34px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px;line-height:1.2}
+    .hero .sub{font-size:15px;opacity:.82;font-weight:400;line-height:1.6}
+    .hero .tags{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+    .hero .tag{
+      padding:6px 16px;border-radius:100px;font-size:12.5px;font-weight:600;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);
+      backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    }
+
+    /* ═══ Content Area ═══ */
+    .body{padding:36px 44px 44px}
+
+    /* ═══ Section ═══ */
+    .sec{margin-bottom:40px}.sec:last-child{margin-bottom:0}
+    .sec-head{margin-bottom:18px}
+    .sec-en{
+      font-size:10.5px;font-weight:700;color:var(--cyan);
+      letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
+    }
+    .sec-t{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.2px}
+
+    /* ═══ Desc ═══ */
+    .desc{font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:20px}
+    .desc b{color:var(--cyan);font-weight:600}
+
+    /* ═══ Pillars ═══ */
+    .pils{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .pil{
+      text-align:center;padding:28px 18px 24px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .pil:hover{background:#fff;border-color:var(--b2);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+    .pil .ico{
+      width:42px;height:42px;margin:0 auto 14px;border-radius:12px;
+      display:grid;place-items:center;font-size:16px;color:#fff;font-weight:700;
+    }
+    .pil .ico.cy{background:linear-gradient(135deg,#0891b2,#22d3ee)}
+    .pil h4{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .pil .en{font-size:9.5px;color:var(--t4);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+    .pil p{font-size:12.5px;color:var(--t3);line-height:1.6}
+
+    /* ═══ Grid-2 ═══ */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .gc{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);position:relative;
+    }
+    .gc:hover{background:#fff;border-color:var(--b2);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .gc h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:7px;line-height:1.45}
+    .gc p{font-size:12.5px;color:var(--t3);line-height:1.7}
+
+    /* ═══ Detail List ═══ */
+    .dl{display:flex;flex-direction:column;gap:12px}
+    .di{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .di:hover{background:#fff;border-color:var(--b2)}
+    .di h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+    .di p{font-size:12.5px;color:var(--t3);line-height:1.65}
+
+    /* ═══ Team ═══ */
+    .team{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .tc{
+      padding:18px 20px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .tc:hover{border-color:var(--b2)}
+    .tc .nm{font-size:14.5px;font-weight:700;color:var(--ink)}
+    .tc .rl{font-size:11px;color:var(--cyan);font-weight:600;margin:1px 0 6px}
+    .tc p{font-size:12px;color:var(--t3);line-height:1.55}
+
+    /* ═══ Metrics ═══ */
+    .mets{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .met{
+      text-align:center;padding:20px 8px;border-radius:var(--r);
+      background:linear-gradient(135deg,#ecfeff,#f8fdff);
+      border:1px solid #a5f3fc;
+    }
+    .met .n{font-size:26px;font-weight:900;color:var(--cyan);line-height:1}
+    .met h4{font-size:11.5px;font-weight:700;color:var(--ink);margin:8px 0 2px}
+    .met p{font-size:10.5px;color:var(--t4)}
+
+    /* ═══ Revenue ═══ */
+    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+    .rev{
+      flex:1 1 160px;min-width:140px;max-width:200px;
+      text-align:center;padding:18px 14px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .rev:hover{border-color:var(--b2);background:#fff}
+    .rev h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .rev p{font-size:12px;color:var(--t3)}
+
+    /* ═══ Finance ═══ */
+    .fing{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fin{
+      padding:22px;background:#fafbfd;border-radius:var(--r);
+      border:1px solid var(--b1);
+    }
+    .fin h4{
+      font-size:12px;font-weight:700;color:var(--cyan);
+      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;
+    }
+    .fr{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 0;border-bottom:1px solid var(--b1);font-size:14px;
+    }
+    .fr:last-child{border-bottom:none}
+    .fr .k{color:var(--t4)}.fr .v{color:var(--ink);font-weight:700}
+
+    /* ═══ Footer ═══ */
+    .ft{
+      text-align:center;padding:32px 24px;
+      border-top:1px solid var(--b1);
+    }
+    .ft img{height:16px;width:auto;opacity:.4;margin-bottom:6px}
+    .ft p{font-size:12px;color:var(--t4)}
+
+    /* ═══ Responsive ═══ */
+    @media(max-width:768px){
+      html{font-size:16px}
+      .hero{padding:28px 24px 24px}
+      .hero h2{font-size:26px}
+      .hero .sub{font-size:16px}
+      .hero .tag{font-size:13.5px;padding:7px 18px}
+      .body{padding:24px 20px 32px}
+      .wrap{padding:32px 12px 60px}
+      .hd{padding:44px 20px 36px}
+      .hd h1{font-size:24px}
+      .hd p{font-size:14px}
+      .sec-t{font-size:20px}
+      .sec-en{font-size:11.5px}
+      .desc{font-size:15px;line-height:1.8}
+      .g2,.fing{grid-template-columns:1fr}
+      .pils,.mets{grid-template-columns:1fr 1fr}
+      .pil h4{font-size:15.5px}
+      .pil p{font-size:14px;line-height:1.65}
+      .gc h4{font-size:15px}
+      .gc p{font-size:14px;line-height:1.7}
+      .di h4{font-size:15px}
+      .di p{font-size:14px;line-height:1.7}
+      .tc .nm{font-size:15.5px}
+      .tc .rl{font-size:12.5px}
+      .tc p{font-size:13.5px;line-height:1.6}
+      .met .n{font-size:28px}
+      .met h4{font-size:12.5px}
+      .met p{font-size:11.5px}
+      .rev h4{font-size:15px}
+      .rev p{font-size:13.5px}
+      .fin h4{font-size:13px}
+      .fr{font-size:15px}
+    }
+    @media(max-width:480px){
+      .pils,.mets{grid-template-columns:1fr}
+      .team{grid-template-columns:1fr}
+      .hero .tags{flex-direction:row;flex-wrap:wrap;justify-content:flex-start}
+      .rev{min-width:100%;max-width:100%}
+      .hero{padding:24px 20px 20px}
+      .hero h2{font-size:22px}
+      .body{padding:20px 16px 28px}
+      .sec-t{font-size:19px}
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="index.html">&#8592; 返回首页</a>
+
+  <div class="hd">
+    <img src="logo.png" alt="科创之光 INNOSPARK">
+    <h1>项目详情</h1>
+    <p>未来科创家计划 · Project Details</p>
+  </div>
+
+  <div class="wrap">
+    <div class="proj">
+      <div class="hero cy">
+        <h2>甜筒 UniCone</h2>
+        <p class="sub">持续感知、记录个人数据的主动式服务 AI</p>
+        <div class="tags">
+          <span class="tag">日程</span>
+          <span class="tag">人际</span>
+          <span class="tag">内容</span>
+        </div>
+      </div>
+
+      <div class="body">
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Product</div><div class="sec-t">产品介绍</div></div>
+          <p class="desc"><b>甜筒 UniCone</b>是一款持续感知、记录个人数据，并主动服务的 AI Agent，为超级个体提升<b>日程 · 人际 · 内容</b>三大场景的效能。把每个人散落各处的上下文，沉淀成可持续带来复利的个人资产，释放人类的更多创造力。</p>
+          <p class="desc" style="margin-top:-8px">依托<b>清华系核心团队</b>，凭借基于因果图的在线学习架构与 GDPR 级隐私保护技术，业内首创从"指令触发"向"<b>预判服务</b>"的跨代进化，真正实现全场景下对<b>超级个体</b>创造力与效能的极致赋能。</p>
+          <div class="pils">
+            <div class="pil">
+              <div class="ico cy">◎</div>
+              <h4>日程</h4><div class="en">INLET</div>
+              <p>最有价值的 personal context 入口</p>
+            </div>
+            <div class="pil">
+              <div class="ico cy">∞</div>
+              <h4>人际</h4><div class="en">LINK</div>
+              <p>人与人之间上下文的链接</p>
+            </div>
+            <div class="pil">
+              <div class="ico cy">↗</div>
+              <h4>内容</h4><div class="en">OUTPUT</div>
+              <p>上下文价值的对外延伸</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Highlights</div><div class="sec-t">投资亮点</div></div>
+          <div class="g2">
+            <div class="gc"><h4>主动服务的人机新范式</h4><p>打破被动对话模式，通过持续感知实现意图预判与主动介入，定义从工具向 AI Partner 的跨代级交互跃迁。</p></div>
+            <div class="gc"><h4>上下文资产化的记忆引擎</h4><p>自研因果图长期记忆架构，将碎片信息沉淀为可复利的个人数字资产，构建难以逾越的核心技术护城河。</p></div>
+            <div class="gc"><h4>全栈闭环的清华系团队</h4><p>汇聚顶尖学术、硬核工程与百万级市场号召力，能将尖端算法转化为工业级产品并实现商业跑通。</p></div>
+            <div class="gc"><h4>精准赋能高净值超级个体</h4><p>聚焦日程、人际与内容场景，已获百万级商业订单实测验证，展现出极强爆发力。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Capabilities</div><div class="sec-t">核心能力</div></div>
+          <div class="dl">
+            <div class="di"><h4>持续感知 — 精准识别用户意图</h4><p>多模态数据融合，精准识别用户意图；自动捕获任务上下文，避免误判遗漏；针对微信、飞书等办公场景深度优化。</p></div>
+            <div class="di"><h4>积累认知 — 因果图记忆架构</h4><p>层层提取数据结构，基于因果图架构；有效捕捉用户交互中有意义信息；在线学习更新，用户无感建图。</p></div>
+            <div class="di"><h4>主动服务 — 恰到好处的 AI 助理</h4><p>小大协作模型，节省 token 快速反应；业内首个真实用户数据积累；基于真实数据微调训练。</p></div>
+            <div class="di"><h4>安全隐私 — GDPR 级防护</h4><p>数据本地存储不上云；加密传输；敏感信息掩码传输，堵住 API 泄露。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Moat</div><div class="sec-t">技术壁垒</div></div>
+          <div class="g2">
+            <div class="gc"><h4>因果图长期记忆架构</h4><p>首创基于因果图的在线学习记忆系统，实现上下文的深度理解与关联推理，远超传统 RAG 方案。</p></div>
+            <div class="gc"><h4>GDPR 级隐私保护</h4><p>数据本地存储 + 加密传输 + 敏感信息掩码三重防护，确保用户数据绝对安全。</p></div>
+            <div class="gc"><h4>多模态上下文融合</h4><p>整合文本、语音、日程、社交等多维度数据，构建完整的个人上下文画像。</p></div>
+            <div class="gc"><h4>预判式服务引擎</h4><p>基于用户行为模式学习，在用户需求产生前主动提供服务建议，从"人找服务"进化到"服务找人"。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Team</div><div class="sec-t">团队简介</div></div>
+          <div class="team">
+            <div class="tc">
+              <div class="nm">唐元博</div>
+              <div class="rl">创始人 · CEO</div>
+              <p>清华大学博士，数据科学与信息技术方向，专注数据高效轨迹生成、大模型 MoE 等</p>
+            </div>
+            <div class="tc">
+              <div class="nm">胡可儿</div>
+              <div class="rl">CPO · KOL</div>
+              <p>清华大学硕士，全网百万大V，APEC 亚太青年领袖；负责产品设计与市场调研</p>
+            </div>
+            <div class="tc">
+              <div class="nm">唐华泽</div>
+              <div class="rl">CTO</div>
+              <p>清华大学博士，参与美团无人机 ATUM 系统开发，获 2024 卓越实践奖</p>
+            </div>
+            <div class="tc">
+              <div class="nm">郭文浩</div>
+              <div class="rl">全栈架构</div>
+              <p>8 年企业级 AI 落地经验，曾服务多家头部客户，实现超 50% 人力优化</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Market</div><div class="sec-t">市场与落地现状</div></div>
+          <div class="mets">
+            <div class="met"><div class="n">60+</div><h4>一作顶会论文</h4><p>ICDE / CHI / IMWUT</p></div>
+            <div class="met"><div class="n">2k+</div><h4>开源 Star</h4><p>技术影响力验证</p></div>
+            <div class="met"><div class="n">百万</div><h4>商业订单</h4><p>商业化能力验证</p></div>
+            <div class="met"><div class="n">5k+</div><h4>种子用户</h4><p>超级个体精准命中</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Revenue & Finance</div><div class="sec-t">营收与融资</div></div>
+          <div class="revs">
+            <div class="rev"><h4>个人订阅</h4><p>按月/年订阅付费</p></div>
+            <div class="rev"><h4>采集分销</h4><p>上下文数据合规分销</p></div>
+            <div class="rev"><h4>上下文商业网络</h4><p>跨平台商业连接</p></div>
+            <div class="rev"><h4>可穿戴硬件</h4><p>感知硬件设备销售</p></div>
+            <div class="rev"><h4>Token 计量</h4><p>按使用量按需计费</p></div>
+          </div>
+          <div class="fing">
+            <div class="fin">
+              <h4>融资计划</h4>
+              <div class="fr"><span class="k">轮次</span><span class="v">天使轮</span></div>
+              <div class="fr"><span class="k">融资目标</span><span class="v">1,500 万 CNY</span></div>
+              <div class="fr"><span class="k">估值</span><span class="v">1.5 亿 CNY</span></div>
+            </div>
+            <div class="fin">
+              <h4>三年 ARR 预测（万元）</h4>
+              <div class="fr"><span class="k">Y1</span><span class="v">1,340</span></div>
+              <div class="fr"><span class="k">Y2</span><span class="v">5,200</span></div>
+              <div class="fr"><span class="k">Y3</span><span class="v">17,000</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <img src="logo.png" alt="科创之光">
+    <p>科创之光 INNOSPARK · 未来科创家计划</p>
+  </div>
+
+</body>
+</html>
