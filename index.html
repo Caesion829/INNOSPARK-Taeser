@@ -35,9 +35,9 @@
 
     /* ═══ Projects Grid ═══ */
     .grid{
-      max-width:960px;margin:0 auto;
+      max-width:1020px;margin:0 auto;
       padding:56px 24px 80px;
-      display:grid;grid-template-columns:1fr 1fr;gap:28px;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
     }
 
     /* ═══ Project Card ═══ */
@@ -118,6 +118,9 @@
       .card-arrow{font-size:18px}
       .ft p{font-size:17px}
     }
+    @media(min-width:769px) and (max-width:960px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
   </style>
 </head>
 <body>
@@ -157,6 +160,22 @@
           <span class="bl">AI Agent</span>
           <span class="bl">人机关系</span>
           <span class="bl">超级个体</span>
+        </div>
+        <div class="card-arrow bl">查看详情 &#8594;</div>
+      </div>
+    </a>
+
+    <a class="card" href="lian.html">
+      <div class="card-banner bl">
+        <div class="icon">&#9881;</div>
+      </div>
+      <div class="card-body">
+        <h2>力安机器人</h2>
+        <p class="sub">打造下一代通用柔性机器人本体平台，以气动刚柔耦合架构实现本质安全，切入千亿理疗市场。</p>
+        <div class="card-tags">
+          <span class="bl">柔性机器人</span>
+          <span class="bl">具身智能</span>
+          <span class="bl">医疗康养</span>
         </div>
         <div class="card-arrow bl">查看详情 &#8594;</div>
       </div>
