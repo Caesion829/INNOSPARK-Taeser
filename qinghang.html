@@ -137,9 +137,8 @@
     .tc p{font-size:16px;color:var(--t3);line-height:1.55}
 
     /* ═══ Revenue ═══ */
-    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;justify-content:center}
+    .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
     .rev{
-      flex:0 1 200px;min-width:160px;
       text-align:center;padding:18px 14px;border-radius:var(--r);
       background:#fafbfd;border:1px solid var(--b1);
       transition:all .25s var(--ease);
@@ -210,7 +209,7 @@
       .pils{grid-template-columns:1fr}
       .team{grid-template-columns:1fr}
       .hero .tags{flex-direction:row;flex-wrap:wrap;justify-content:flex-start}
-      .rev{min-width:100%;max-width:100%}
+      .revs{grid-template-columns:1fr}
       .hero{padding:24px 20px 20px}
       .hero h2{font-size:30px}
       .body{padding:20px 16px 28px}

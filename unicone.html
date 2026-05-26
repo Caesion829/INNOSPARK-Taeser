@@ -148,9 +148,9 @@
     .met p{font-size:14px;color:var(--t4)}
 
     /* ═══ Revenue ═══ */
-    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;justify-content:center}
+    .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+    .revs.r2{grid-template-columns:repeat(2,1fr)}
     .rev{
-      flex:0 1 200px;min-width:160px;
       text-align:center;padding:18px 14px;border-radius:var(--r);
       background:#fafbfd;border:1px solid var(--b1);
       transition:all .25s var(--ease);
@@ -224,7 +224,7 @@
       .pils,.mets{grid-template-columns:1fr}
       .team{grid-template-columns:1fr}
       .hero .tags{flex-direction:row;flex-wrap:wrap;justify-content:flex-start}
-      .rev{min-width:100%;max-width:100%}
+      .revs,.revs.r2{grid-template-columns:1fr}
       .hero{padding:24px 20px 20px}
       .hero h2{font-size:30px}
       .body{padding:20px 16px 28px}
@@ -352,7 +352,7 @@
             <div class="rev"><h4>采集分销</h4><p>上下文数据合规分销</p></div>
             <div class="rev"><h4>上下文商业网络</h4><p>跨平台商业连接</p></div>
           </div>
-          <div class="revs">
+          <div class="revs r2">
             <div class="rev"><h4>可穿戴硬件</h4><p>感知硬件设备销售</p></div>
             <div class="rev"><h4>Token 计量</h4><p>按使用量按需计费</p></div>
           </div>
