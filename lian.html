@@ -137,9 +137,9 @@
     .tc p{font-size:16px;color:var(--t3);line-height:1.55}
 
     /* ═══ Revenue ═══ */
-    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;justify-content:center}
     .rev{
-      flex:1 1 160px;min-width:140px;max-width:200px;
+      flex:0 1 200px;min-width:160px;
       text-align:center;padding:18px 14px;border-radius:var(--r);
       background:#fafbfd;border:1px solid var(--b1);
       transition:all .25s var(--ease);
@@ -161,9 +161,10 @@
     .fr{
       display:flex;justify-content:space-between;align-items:center;
       padding:10px 0;border-bottom:1px solid var(--b1);font-size:19px;
+      gap:12px;
     }
     .fr:last-child{border-bottom:none}
-    .fr .k{color:var(--t4)}.fr .v{color:var(--ink);font-weight:700}
+    .fr .k{color:var(--t4);white-space:nowrap}.fr .v{color:var(--ink);font-weight:700;text-align:right}
 
     /* ═══ Footer ═══ */
     .ft{
@@ -340,14 +341,15 @@
           <div class="sec-head"><div class="sec-en">Revenue & Finance</div><div class="sec-t">营收与融资</div></div>
           <div class="revs">
             <div class="rev"><h4>核心部件销售</h4><p>"气动刚柔耦合"标准化关节模组</p></div>
-            <div class="rev"><h4>定制化课题与研发服务</h4><p>承接实验室研发项目</p></div>
             <div class="rev"><h4>技术开发合作</h4><p>与医院、大健康运营商合作开发</p></div>
+            <div class="rev"><h4>定制化课题与研发服务</h4><p>承接实验室研发项目</p></div>
           </div>
           <div class="fing">
             <div class="fin">
               <h4>融资计划</h4>
               <div class="fr"><span class="k">轮次</span><span class="v">种子轮</span></div>
               <div class="fr"><span class="k">融资目标</span><span class="v">500 万 CNY</span></div>
+              <div class="fr"><span class="k">估值</span><span class="v">5,000 万 CNY</span></div>
             </div>
             <div class="fin">
               <h4>发展规划</h4>

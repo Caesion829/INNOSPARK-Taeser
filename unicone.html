@@ -148,9 +148,9 @@
     .met p{font-size:14px;color:var(--t4)}
 
     /* ═══ Revenue ═══ */
-    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+    .revs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;justify-content:center}
     .rev{
-      flex:1 1 160px;min-width:140px;max-width:200px;
+      flex:0 1 200px;min-width:160px;
       text-align:center;padding:18px 14px;border-radius:var(--r);
       background:#fafbfd;border:1px solid var(--b1);
       transition:all .25s var(--ease);
@@ -172,9 +172,10 @@
     .fr{
       display:flex;justify-content:space-between;align-items:center;
       padding:10px 0;border-bottom:1px solid var(--b1);font-size:19px;
+      gap:12px;
     }
     .fr:last-child{border-bottom:none}
-    .fr .k{color:var(--t4)}.fr .v{color:var(--ink);font-weight:700}
+    .fr .k{color:var(--t4);white-space:nowrap}.fr .v{color:var(--ink);font-weight:700;text-align:right}
 
     /* ═══ Footer ═══ */
     .ft{
@@ -350,6 +351,8 @@
             <div class="rev"><h4>个人订阅</h4><p>按月/年订阅付费</p></div>
             <div class="rev"><h4>采集分销</h4><p>上下文数据合规分销</p></div>
             <div class="rev"><h4>上下文商业网络</h4><p>跨平台商业连接</p></div>
+          </div>
+          <div class="revs">
             <div class="rev"><h4>可穿戴硬件</h4><p>感知硬件设备销售</p></div>
             <div class="rev"><h4>Token 计量</h4><p>按使用量按需计费</p></div>
           </div>
