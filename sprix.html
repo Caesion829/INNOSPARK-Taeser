@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>屿智同行 Sprix AI | 未来科创家计划 INNOSPARK</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --blue:#2563eb;--blue-d:#1d4ed8;--blue-l:#3b82f6;--blue-ll:#60a5fa;
+      --ink:#0f172a;--t1:#1e293b;--t2:#334155;--t3:#64748b;--t4:#94a3b8;
+      --b1:#f1f5f9;--b2:#e2e8f0;--b3:#cbd5e1;
+      --r:16px;--rl:20px;
+      --ease:cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      background:#fafbfd;color:var(--t1);line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* ═══ Back Button ═══ */
+    .back{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:8px 18px;margin:20px 0 0 20px;
+      font-size:18px;font-weight:600;color:var(--blue);
+      text-decoration:none;border-radius:100px;
+      background:#fff;border:1px solid #e2e8f0;
+      transition:all .2s var(--ease);
+    }
+    .back:hover{background:#f8fafc;border-color:#cbd5e1}
+
+    /* ═══ Header ═══ */
+    .hd{
+      text-align:center;padding:48px 24px 40px;
+      background:#fff;border-bottom:1px solid var(--b1);
+    }
+    .hd img{height:36px;width:auto;margin-bottom:16px;opacity:.85}
+    .hd h1{font-size:35px;font-weight:800;color:var(--ink);letter-spacing:-.3px;margin-bottom:6px}
+    .hd p{font-size:17px;color:var(--t4);font-weight:500;letter-spacing:.5px}
+
+    /* ═══ Layout ═══ */
+    .wrap{max-width:880px;margin:0 auto;padding:40px 24px 72px}
+
+    /* ═══ Project Frame ═══ */
+    .proj{
+      background:#fff;border-radius:var(--rl);
+      border:1px solid var(--b1);
+      box-shadow:0 0 0 1px rgba(0,0,0,.02),0 4px 24px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03);
+      overflow:hidden;
+    }
+
+    /* ═══ Hero ═══ */
+    .hero{
+      padding:40px 44px 36px;color:#fff;position:relative;overflow:hidden;
+    }
+    .hero.bl{background:linear-gradient(135deg,#1e40af 0%,#2563eb 50%,#3b82f6 100%)}
+    .hero::after{
+      content:"";position:absolute;top:-40%;right:-20%;width:500px;height:500px;
+      border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;
+    }
+    .hero h2{font-size:45px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px;line-height:1.2}
+    .hero .sub{font-size:20px;opacity:.82;font-weight:400;line-height:1.6}
+    .hero .tags{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+    .hero .tag{
+      padding:8px 20px;border-radius:100px;font-size:17px;font-weight:600;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);
+      backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    }
+
+    /* ═══ Content Area ═══ */
+    .body{padding:36px 44px 44px}
+
+    /* ═══ Section ═══ */
+    .sec{margin-bottom:40px}.sec:last-child{margin-bottom:0}
+    .sec-head{margin-bottom:18px}
+    .sec-en{
+      font-size:14px;font-weight:700;color:var(--blue);
+      letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
+    }
+    .sec-t{font-size:25px;font-weight:800;color:var(--ink);letter-spacing:-.2px}
+
+    /* ═══ Desc ═══ */
+    .desc{font-size:19px;color:var(--t2);line-height:1.85;margin-bottom:20px}
+    .desc b{color:var(--blue);font-weight:600}
+
+    /* ═══ Pillars ═══ */
+    .pils{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .pil{
+      text-align:center;padding:28px 18px 24px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .pil:hover{background:#fff;border-color:var(--b2);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+    .pil .ico{
+      width:42px;height:42px;margin:0 auto 14px;border-radius:12px;
+      display:grid;place-items:center;font-size:16px;color:#fff;font-weight:700;
+    }
+    .pil .ico.bl{background:linear-gradient(135deg,#2563eb,#60a5fa)}
+    .pil h4{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .pil .en{font-size:13px;color:var(--t4);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+    .pil p{font-size:17px;color:var(--t3);line-height:1.6}
+
+    /* ═══ Grid-2 ═══ */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .gc{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);position:relative;
+    }
+    .gc:hover{background:#fff;border-color:var(--b2);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .gc h4{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:7px;line-height:1.45}
+    .gc p{font-size:17px;color:var(--t3);line-height:1.7}
+
+    /* ═══ Detail List ═══ */
+    .dl{display:flex;flex-direction:column;gap:12px}
+    .di{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .di:hover{background:#fff;border-color:var(--b2)}
+    .di h4{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+    .di p{font-size:17px;color:var(--t3);line-height:1.65}
+
+    /* ═══ Team ═══ */
+    .team{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .tc{
+      padding:18px 20px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .tc:hover{border-color:var(--b2)}
+    .tc .nm{font-size:19px;font-weight:700;color:var(--ink)}
+    .tc .rl{font-size:15px;color:var(--blue);font-weight:600;margin:1px 0 6px}
+    .tc p{font-size:16px;color:var(--t3);line-height:1.55}
+
+    /* ═══ Metrics ═══ */
+    .mets{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+    .met{
+      text-align:center;padding:20px 16px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .met:hover{border-color:var(--b2);background:#fff}
+    .met .val{font-size:28px;font-weight:900;color:var(--blue);margin-bottom:4px}
+    .met .lbl{font-size:16px;color:var(--t3)}
+
+    /* ═══ Revenue ═══ */
+    .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+    .rev{
+      text-align:center;padding:18px 14px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      transition:all .25s var(--ease);
+    }
+    .rev:hover{border-color:var(--b2);background:#fff}
+    .rev h4{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .rev p{font-size:16px;color:var(--t3)}
+
+    /* ═══ Finance ═══ */
+    .fing{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fin{
+      padding:22px;background:#fafbfd;border-radius:var(--r);
+      border:1px solid var(--b1);
+    }
+    .fin h4{
+      font-size:16px;font-weight:700;color:var(--blue);
+      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;
+    }
+    .fr{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 0;border-bottom:1px solid var(--b1);font-size:19px;
+      gap:12px;
+    }
+    .fr:last-child{border-bottom:none}
+    .fr .k{color:var(--t4);white-space:nowrap}.fr .v{color:var(--ink);font-weight:700;text-align:right}
+
+    /* ═══ Roadmap ═══ */
+    .road{display:flex;flex-direction:column;gap:12px}
+    .rd{
+      padding:20px 22px;border-radius:var(--r);
+      background:#fafbfd;border:1px solid var(--b1);
+      border-left:4px solid var(--blue);
+      transition:all .25s var(--ease);
+    }
+    .rd:hover{background:#fff;border-color:var(--b2);border-left-color:var(--blue)}
+    .rd .ph{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+    .rd h4{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+    .rd p{font-size:17px;color:var(--t3);line-height:1.65}
+
+    /* ═══ Footer ═══ */
+    .ft{
+      text-align:center;padding:32px 24px;
+      border-top:1px solid var(--b1);
+    }
+    .ft img{height:16px;width:auto;opacity:.4;margin-bottom:6px}
+    .ft p{font-size:16px;color:var(--t4)}
+
+    /* ═══ Responsive ═══ */
+    @media(max-width:768px){
+      html{font-size:17px}
+      .hero{padding:28px 24px 24px}
+      .hero h2{font-size:35px}
+      .hero .sub{font-size:21px}
+      .hero .tag{font-size:17px;padding:9px 22px}
+      .body{padding:24px 20px 32px}
+      .wrap{padding:32px 12px 60px}
+      .hd{padding:44px 20px 36px}
+      .hd h1{font-size:33px}
+      .hd p{font-size:18px}
+      .sec-t{font-size:26px}
+      .sec-en{font-size:16px}
+      .desc{font-size:19px;line-height:1.8}
+      .g2,.fing{grid-template-columns:1fr}
+      .pils{grid-template-columns:1fr 1fr}
+      .pil h4{font-size:20px}
+      .pil p{font-size:18px;line-height:1.65}
+      .gc h4{font-size:19px}
+      .gc p{font-size:18px;line-height:1.7}
+      .di h4{font-size:19px}
+      .di p{font-size:18px;line-height:1.7}
+      .tc .nm{font-size:20px}
+      .tc .rl{font-size:17px}
+      .tc p{font-size:17px;line-height:1.6}
+      .met .val{font-size:26px}
+      .met .lbl{font-size:17px}
+      .rev h4{font-size:19px}
+      .rev p{font-size:17px}
+      .fin h4{font-size:17px}
+      .fr{font-size:19px}
+      .rd .ph{font-size:14px}
+      .rd h4{font-size:19px}
+      .rd p{font-size:18px}
+      .ft p{font-size:17px}
+    }
+    @media(max-width:480px){
+      .pils{grid-template-columns:1fr}
+      .team{grid-template-columns:1fr}
+      .hero .tags{flex-direction:row;flex-wrap:wrap;justify-content:flex-start}
+      .revs{grid-template-columns:1fr}
+      .mets{grid-template-columns:1fr 1fr}
+      .hero{padding:24px 20px 20px}
+      .hero h2{font-size:30px}
+      .body{padding:20px 16px 28px}
+      .sec-t{font-size:25px}
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="index.html">&#8592; 返回首页</a>
+
+  <div class="hd">
+    <img src="logo.png" alt="科创之光 INNOSPARK">
+    <h1>项目详情</h1>
+    <p>未来科创家计划 · Project Details</p>
+  </div>
+
+  <div class="wrap">
+    <div class="proj">
+      <div class="hero bl">
+        <h2>屿智同行 Sprix AI</h2>
+        <p class="sub">Agent Native 数字劳动力平台，连接人才、Agent 与企业，重塑 AI 时代生产力评估与交付体系</p>
+        <div class="tags">
+          <span class="tag">Agent Native</span>
+          <span class="tag">数字劳动力</span>
+          <span class="tag">Pre-A 轮融资</span>
+        </div>
+      </div>
+
+      <div class="body">
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Product</div><div class="sec-t">产品介绍</div></div>
+          <p class="desc"><b>屿智同行 Sprix AI</b> 是一个 <b>Agent Native 数字劳动力平台</b>，基于自研大模型 SprixFoundation Model 与 Agent 运行框架 SprixAgent OS，为个人用户构建可持续学习的 <b>Agent 分身</b>，为企业提供可量化、可复制的 Human-Agent 协作生产力，连接个人、Agent 与企业三大端，构建下一代数字劳动力市场。</p>
+          <div class="pils">
+            <div class="pil">
+              <div class="ico bl">🤖</div>
+              <h4>Agent 分身</h4><div class="en">TWIN</div>
+              <p>融合技能、履历与多轮任务数据，构建可持续学习的个人 Agent 分身</p>
+            </div>
+            <div class="pil">
+              <div class="ico bl">⚡</div>
+              <h4>多 Agent 调度</h4><div class="en">DISPATCH</div>
+              <p>基于贝叶斯-Stackelberg 机制，自动完成任务拆解、团队组建与协同执行</p>
+            </div>
+            <div class="pil">
+              <div class="ico bl">📊</div>
+              <h4>能力评估</h4><div class="en">EVAL</div>
+              <p>行业领先的 Human-Agent 双重质量评估体系，量化 AI 协作生产力</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Highlights</div><div class="sec-t">投资亮点</div></div>
+          <div class="g2">
+            <div class="gc"><h4>AI 时代人才评估刚需</h4><p>企业越来越难通过学历与简历判断候选人真实 AI 协作生产力，Sprix AI 提供 AI 面试、Agent 分身、Human-Agent 协作测试，重构人才评估标准。</p></div>
+            <div class="gc"><h4>万亿数字劳动力赛道</h4><p>全球 AI 替代浪潮下，数字劳动力市场加速形成。Sprix AI 以平台形式连接企业需求、Agent 能力与协作师，构建新一代生产力交付网络。</p></div>
+            <div class="gc"><h4>自研核心算法壁垒</h4><p>16 篇论文及专利，CEO 以第一作者在清华认证顶级会议发表论文，贝叶斯-Stackelberg 博弈框架支撑平台核心调度与匹配机制。</p></div>
+            <div class="gc"><h4>稀缺 Human-Agent 数据资产</h4><p>平台持续积累人类与 Agent 协作创造生产力的全过程数据，成为 AGI 训练最稀缺、最具价值的数据基础设施之一。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Technology</div><div class="sec-t">核心技术</div></div>
+          <div class="dl">
+            <div class="di"><h4>Agent 分身建模（Agent Twin）</h4><p>基于 SprixFoundation Model 与 SprixAgent OS，融合用户技能、履历、AI 面试、多轮交互及任务执行数据，构建可持续学习的 Agent 分身，实现能力建模、行为建模与决策建模，复现用户在真实工作场景中的执行方式。行为一致性 BSS ≥ 60%，任务完成率 TCR ≥ 90%。</p></div>
+            <div class="di"><h4>多 Agent 智能调度引擎</h4><p>面向 Human-Agent Workforce 的智能调度引擎，基于 SprixMarket Engine（贝叶斯-Stackelberg 市场机制）与多 Agent 协同框架，自动完成任务拆解、团队组建、资源配置与协同执行。任务成功率 TSR ≥ 92%，任务周期缩短 TCT ≥ 55%，成本降低率 CRR ≥ 38%。</p></div>
+            <div class="di"><h4>Human-Agent 协作评估体系</h4><p>构建行业领先的 Human-Agent 双重质量评估体系，通过 Rubric 规则库、LLM Judge 与专家反馈闭环，实现任务结果质量评估、风险预警与 Agent 信誉沉淀。量化评估候选人的 Human-Agent 协同生产力，专家一致率 EAR ≥ 90%。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Traction</div><div class="sec-t">产品数据</div></div>
+          <div class="mets">
+            <div class="met"><div class="val">200+</div><div class="lbl">高校覆盖</div></div>
+            <div class="met"><div class="val">600+</div><div class="lbl">KOL 合作</div></div>
+            <div class="met"><div class="val">10,000+</div><div class="lbl">DAU 用户</div></div>
+            <div class="met"><div class="val">8,000+</div><div class="lbl">日活 Agent</div></div>
+            <div class="met"><div class="val">500%</div><div class="lbl">Agent 数月增长</div></div>
+            <div class="met"><div class="val">1,000+</div><div class="lbl">企业合作</div></div>
+            <div class="met"><div class="val">30,000+</div><div class="lbl">人才库规模</div></div>
+            <div class="met"><div class="val">50,000+</div><div class="lbl">技能数据量</div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Team</div><div class="sec-t">团队简介</div></div>
+          <div class="team">
+            <div class="tc">
+              <div class="nm">张永豪</div>
+              <div class="rl">创始人 · CEO & CTO</div>
+              <p>2025 年福布斯 U30，AI Agent 领域深度研究者，16 篇论文及专利，顶级会议 Best Paper 第二名；主导公司技术战略与产品方向</p>
+            </div>
+            <div class="tc">
+              <div class="nm">联创 · 运营 & CMO</div>
+              <div class="rl">联合创始人</div>
+              <p>10 年新媒体运营经验，AI 内容创业者，负责流量矩阵与市场增长；管理 1000w+ 粉丝矩阵，Top5 头部账号创始人</p>
+            </div>
+            <div class="tc">
+              <div class="nm">联创 · 产品 & BD VP</div>
+              <div class="rl">联合创始人</div>
+              <p>500 强企业 BU 管理经验，负责 B 端市场拓展；曾带领团队完成千万级销售业绩与跨行业产品落地</p>
+            </div>
+            <div class="tc">
+              <div class="nm">AI 顾问团队</div>
+              <div class="rl">学术顾问</div>
+              <p>AgentLand 创始人（美国顶尖大学 AI 实验室）、NSF CAREER Award 获得者，CVPR / ICCV / AAAI 发表者，提供前沿 AI 技术支持</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Market</div><div class="sec-t">市场空间</div></div>
+          <p class="desc">全球 AI 加速渗透各行业。世界经济论坛预测 2030 年前 39% 的核心技能需更新；麦肯锡预测 30%~50% 的工作内容将可被 AI 替代。AI 时代的人才评估与数字劳动力市场正在从 0 到 1 形成，Sprix AI 切入<b>全球 450 亿美元人才评估市场</b>，远期布局<b>数字劳动力基础设施</b>。</p>
+          <div class="g2">
+            <div class="gc"><h4>短期：AI 招聘评估平台</h4><p>通过 AI 模拟面试、Agent 分身构建、Human-Agent 协作测试，帮助企业识别候选人的 AI 协作能力，重塑招聘与人才评估标准。</p></div>
+            <div class="gc"><h4>中期：数字劳动力市场</h4><p>连接企业需求、Agent 分身与协作师，形成新一代数字劳动力市场，企业购买的是可量化、可复制、可持续工作的生产力。</p></div>
+            <div class="gc"><h4>长期：全球 Agent 人才网络</h4><p>持续积累海量 Human-Agent 协作数据，形成全球最大的 Agent 人才网络，成为 Agent 与 AGI 时代的核心数据基础设施。</p></div>
+            <div class="gc"><h4>数据资产护城河</h4><p>平台记录人类与 Agent 协作创造生产力的完整闭环数据，形成 AGI 训练过程中最稀缺、最具价值的数据资产之一。</p></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Roadmap</div><div class="sec-t">发展规划</div></div>
+          <div class="road">
+            <div class="rd">
+              <div class="ph">第 1 年 · 启动与验证</div>
+              <h4>AI 招聘平台建设 · PMF 验证</h4>
+              <p>完成 AI 面试、Agent Twin、岗位推荐与任务市场建设；验证 AI 协作能力评估体系；实现稳定收入增长，覆盖 200+ 高校、服务 1,000+ 企业，沉淀 10 万级人才与 Agent 数据。</p>
+            </div>
+            <div class="rd">
+              <div class="ph">第 2–3 年 · 规模化扩张</div>
+              <h4>Human-Agent 协作市场 · 双边网络效应</h4>
+              <p>扩展 Human-Agent 协作市场，引入专业 Agent 协作师生态；形成服务 1 万+ 企业、百万级 Agent 网络与百万级 Human-Agent 协作记录的规模化平台。</p>
+            </div>
+            <div class="rd">
+              <div class="ph">第 4–5 年 · 持续增长与盈利</div>
+              <h4>全球最大 Agent 人才网络 · IPO</h4>
+              <p>建设全球最大 Agent 人才网络；沉淀 Agent 能力、信誉与历史交付记录；形成 Agent 经济生态与 Human-Agent 生产力基础设施；持续盈利，迈向 IPO。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><div class="sec-en">Revenue & Finance</div><div class="sec-t">营收与融资</div></div>
+          <div class="revs">
+            <div class="rev"><h4>企业端收费</h4><p>岗位发布费、任务发布费、AI 面试与测评服务费</p></div>
+            <div class="rev"><h4>Agent 结果解锁</h4><p>企业按结果付费，平台抽佣并向 Agent 发放激励</p></div>
+            <div class="rev"><h4>C 端 Token</h4><p>个人用户购买 Token 使用 Agent 分身与平台服务</p></div>
+          </div>
+          <div class="fing">
+            <div class="fin">
+              <h4>融资计划</h4>
+              <div class="fr"><span class="k">轮次</span><span class="v">Pre-A 轮</span></div>
+              <div class="fr"><span class="k">融资目标</span><span class="v">3,000 万 CNY</span></div>
+              <div class="fr"><span class="k">出让股份</span><span class="v">30%</span></div>
+            </div>
+            <div class="fin">
+              <h4>资金用途</h4>
+              <div class="fr"><span class="k">AI 技术研发</span><span class="v">30%</span></div>
+              <div class="fr"><span class="k">产品与增长</span><span class="v">30%</span></div>
+              <div class="fr"><span class="k">渠道合作</span><span class="v">20%</span></div>
+              <div class="fr"><span class="k">团队建设</span><span class="v">20%</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <img src="logo.png" alt="科创之光">
+    <p>科创之光 INNOSPARK · 未来科创家计划</p>
+  </div>
+
+  <script>if(!document.referrer||document.referrer.indexOf(location.hostname)===-1){var b=document.querySelector('.back');if(b)b.style.display='none'}</script>
+</body>
+</html>
